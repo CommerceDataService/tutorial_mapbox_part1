@@ -1,0 +1,16 @@
+.scroll {
+     /*Set a css background */
+    background:url(../img/DOC_Tutorial_header.jpg);
+
+    /*Dont mind the rest*/
+    position:relative;
+    height:120%;
+    background-position:bottom;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-repeat: no-repeat;
+
+    text-align:center;
+    color:#fff;
+    font-family:'Open Sans' sans-serif;
+}

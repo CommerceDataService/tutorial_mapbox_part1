@@ -141,7 +141,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
                           Weather Data <br>for Web Maps</strong>
                         </span>
                         <small><br><span style="font-size:90%;line-height:1.2;" >
-                        Part 1: Using Mapbox and Open source <br>tools to map atmospheric water<br>
+                        Part 1: Using <strong>Mapbox</strong> and open source <br>tools to map atmospheric water<br>
                             </small>
                     
                           <a id = "btn" href="https://github.com/CommerceDataService/tutorial_mapbox_part1/zipball/master"> <strong>ZIP File</strong></a>
@@ -163,7 +163,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
             <div class="row">
                 <br>
                 <div class="col-lg-3 col-md-4 col-sm-5">
-                     <h4>By <a href="https://www.mapbox.com/about/team/#damon-burgett">Damon Burgett</a>, Geographer, Mapbox and Jeff Chen, Chief Data Scientist, US Dept. of Commerce</h4>
+                     <h4>By <a href="https://www.mapbox.com/about/team/#damon-burgett">Damon Burgett</a>, Geographer, Mapbox <small>and <br></small>Jeff Chen, Chief Data Scientist, US Dept. of Commerce</h4>
                 </div>
                 <div class="col-lg-6 col-md-5 col-sm-5">
                <em>As part of the <a href="https://www.commerce.gov/datausability/">Commerce Data Usability Project</a>,  Mapbox in collaboration with the <a href="https://www.commerce.gov/dataservice/">Commerce Data Service</a> has created a two part tutorial that will guide you though processing and visualizating Precipitable Water data.  If you have question, feel free to reach out to the Commerce Data Service at <a href="mailto:data@doc.gov">data@doc.gov</a> or Mapbox at <a href="mailto:help@mapbox.com">help@mapbox.com</a>.</em><br>
@@ -200,9 +200,9 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h3><a id="Step_2_Get_the_data_37"></a>Step 2: Get the data</h3>
 <p>The <a href="http://nomads.ncep.noaa.gov">NOAA NOMADS</a> website provides access to a myriad array of weather prediction data. We’ll be working with precipitable water (PWAT) data from the <a href="http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl">0.25 degree Global Forecast System (GFS)</a>. There is a lot of data in the system, so we’ll guide you through how to find the URL that will enable you to download the right data.</p>
 <p>As can be seen in this file list on the NOMADS site, there are multiple prediction times for each dataset corresponding to when the model has run, each of which allows access to a number of variables for a large number of atmospheric levels at various intervals from when the model has run. To start, let’s select the first file in the list.</p>
-<p><img src="https://github.com/CommerceDataService/tutorial_mapbox_part1/blob/master/img/screencap1.png?raw=true" alt="image"></p>
+<p><img src="img/screencap1.jpg" alt="image"></p>
 <p>For each file, a wizard page allows users to select the appropriate conditions. We’ll need to check off ‘PWAT’ in the section labeled ‘Select the variables desired’, the subregion as well as the handy checkbox at the bottom that creates a URL for “web programming” - we’ll be using a URL constructed from this.</p>
-<p><img src="https://github.com/CommerceDataService/tutorial_mapbox_part1/blob/master/img/screencap2.png?raw=true" alt="image"></p>
+<p><img src="img/screencap2.jpg" alt="image"></p>
 <p>For precipitable water (PWAT) at all levels, we have the following url - note that the url will change with the date, so make sure to construct your own:</p>
 <pre><code><span class="hljs-keyword">http</span>://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?<span class="hljs-built_in">file</span>=gfs.t12z.pgrb2<span class="hljs-number">.0</span>p25.f000&amp;all_lev=<span class="hljs-command"><span class="hljs-keyword">on</span>&amp;<span class="hljs-title">var_PWAT</span>=<span class="hljs-title">on</span>&amp;<span class="hljs-title">leftlon</span>=<span class="hljs-title">0</span>&amp;<span class="hljs-title">rightlon</span>=<span class="hljs-title">360</span>&amp;<span class="hljs-title">toplat</span>=<span class="hljs-title">90</span>&amp;<span class="hljs-title">bottomlat</span>=-<span class="hljs-title">90</span>&amp;<span class="hljs-title">dir</span>=%<span class="hljs-title">2Fgfs</span><span class="hljs-number">.2016011212</span></span>
 </code></pre>

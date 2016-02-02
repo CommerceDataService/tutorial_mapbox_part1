@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="http://digital-english.net/summer2012/markdown.css" >
-
 # Weather Data for Web Maps 
 ##### *Part 1: Using Mapbox and Open source tools to map atmospheric water* 
 By [Damon Burgett](https://www.mapbox.com/about/team/#damon-burgett), Geographer, Mapbox and Jeff Chen, Chief Data Scientist, US Department of Commerce.

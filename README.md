@@ -1,13 +1,13 @@
-<link href="http://kevinburke.bitbucket.org/markdowncss/markdown.css" rel="stylesheet"></link>
+<link rel="stylesheet" type="text/css" href="http://digital-english.net/summer2012/markdown.css" >
 
 # Weather Data for Web Maps 
 ##### *Part 1: Using Mapbox and Open source tools to map atmospheric water* 
 By [Damon Burgett](https://www.mapbox.com/about/team/#damon-burgett), Geographer, Mapbox and Jeff Chen, Chief Data Scientist, US Department of Commerce.
 
-*As part of the [Commerce Data Usability Project](https://www.commerce.gov/datausability/),  Mapbox in collaboration with the [Commerce Data Service](https://www.commerce.gov/dataservice/) has created a two part tutorial that will guide you though processing and visualizating Precipitable Water data.  If you have question, feel free to reach out to the Commerce Data Service at data@doc.gov or Mapbox at help@mapbox.com.*
+*As part of the [Commerce Data Usability Project](https://www.commerce.gov/datausability/),  Mapbox in collaboration with the [Commerce Data Service](https://www.commerce.gov/dataservice/) has created a two part tutorial that will guide you though processing and visualizating precipitable water data from NOAA.  If you have question, feel free to reach out to the Commerce Data Service at data@doc.gov or Mapbox at help@mapbox.com.*
+
 
 #### Atmospheric Rivers (AR) are narrow regions in the atmosphere that that transport water across the world.
-
 
 Like waterways on the ground, ARs are wide ranging in size, with the ability to hold vast amounts of water. The effects of these rivers suspended in the air may be beneficial or detrimental. When ARs slow and stall, vulnerable areas are at risk of heavy, damaging rainfalls and floods. Alternatively, the more common, weaker ARs bring much needed rain to resupply water reserves.
 

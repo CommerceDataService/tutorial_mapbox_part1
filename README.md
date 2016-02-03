@@ -1,11 +1,11 @@
-# Weather Data for Web Maps 
-##### *Part 1: Using Mapbox and Open source tools to map atmospheric water* 
+# Weather Data for Web Maps
+##### *Part 1: Using Mapbox and Open source tools to map atmospheric water*
 By [Damon Burgett](https://www.mapbox.com/about/team/#damon-burgett), Geographer, Mapbox and Jeff Chen, Chief Data Scientist, US Department of Commerce.
 
-*As part of the [Commerce Data Usability Project](https://www.commerce.gov/datausability/),  Mapbox in collaboration with the [Commerce Data Service](https://www.commerce.gov/dataservice/) has created a two part tutorial that will guide you though processing and visualizating precipitable water data from NOAA.  If you have question, feel free to reach out to the Commerce Data Service at data@doc.gov or Mapbox at help@mapbox.com.*
+*As part of the [Commerce Data Usability Project](https://www.commerce.gov/datausability/),  Mapbox in collaboration with the [Commerce Data Service](https://www.commerce.gov/dataservice/) has created a two part tutorial that will guide you though processing and visualizating precipitable water data from NOAA.  If you have any questions, feel free to reach out to the Commerce Data Service at data@doc.gov or Mapbox at help@mapbox.com.*
 
 
-#### Atmospheric Rivers (AR) are narrow regions in the atmosphere that that transport water across the world.
+#### Atmospheric Rivers (AR) are narrow regions in the atmosphere that transport water across the world.
 
 Like waterways on the ground, ARs are wide ranging in size, with the ability to hold vast amounts of water. The effects of these rivers suspended in the air may be beneficial or detrimental. When ARs slow and stall, vulnerable areas are at risk of heavy, damaging rainfalls and floods. Alternatively, the more common, weaker ARs bring much needed rain to resupply water reserves.
 
@@ -13,7 +13,7 @@ How do we know when moisture is moving our way? Among the many meteorological in
 
 ![image](https://cloud.githubusercontent.com/assets/5084513/12313587/ac86d808-ba1d-11e5-9405-e1597f9db8a6.png)
 
-Beyond its utility, I find Pwat to be a very striking weather variable. The complex swirling and eddying patterns bring alive atmospheric processes, and are a beautiful liquid analog to the more esoteric variable that they describe. Combining these data with reference information - coastlines, political borders, and terrain - helps to paint a clearer picture of earth surface and atmospheric interactions on our planet.
+Beyond its utility, I find Pwat to be a very striking weather variable. The complex swirling and eddying patterns bring alive atmospheric processes, and are a beautiful liquid analog to the more esoteric variable that they describe. Combining these data with reference information - coastlines, political borders, and terrain - helps to paint a clearer picture of the earth's surface and atmospheric interactions on our planet.
 
 It’s helpful to keep in mind that Pwat alone does not indicate to what extent certain atmospheric processes, such as thunderstorms, will be able to extract the water from the atmosphere, but it is a measure of the potential for such precipitation through those processes. Nonetheless, it’s a critical measure collected by satellite instruments and used for producing NOAA’s weather forecasts.
 
@@ -74,7 +74,7 @@ A quirk of these grib files are their extent: a global, equirectangular raster w
 gribdoctor smoosh -dev -uw <input>.grib2 <output>.tif
 ```
 
-- `gribdoctor smoosh` is the command + subcommand used to perform this operation; 
+- `gribdoctor smoosh` is the command + subcommand used to perform this operation;
 - `-dev -uw` are input options for `gribdoctor` indicating we want to utilize `-dev` functionality to automatically detect if it is the right spatial reference, and `-uw` to "unwrap" the raster to an -180/180 extent;
 
 For our data:
@@ -96,7 +96,7 @@ Mapbox Studio utilizes the web mercator projection. In order to integrate the PW
 gdalwarp -t_srs EPSG:3857 -r BILINEAR <input>.tif <output>.tif
 ```
 
-- `gdalwarp` is the command used; 
+- `gdalwarp` is the command used;
 - `-t_srs EPSG:3857` is the [EPSG code for web mercator](http://spatialreference.org/ref/sr-org/7483/);
 - `-r BILINEAR` specifies to use bilinear resampling in this operation. Because these data are of a continuous nature, we want to use this method. The default, nearest neighbor, will leave artifacts in the output data.
 
@@ -186,4 +186,4 @@ From the Home tab of Mapbox Studio, click on your published map.
 
 To share, copy the share link in the bottom left of the page. Here's a live map: https://api.mapbox.com/styles/v1/dnomadb/cijqefqgn005h90lxxe5dygmn.html?title=true&access_token=pk.eyJ1IjoiZG5vbWFkYiIsImEiOiJEak5aTXdZIn0.UtQIRl-MzHHZk6TIAHSWww#1.22/21.6/23.5
 
-In part one of this tutorial, we’ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we’ll manipulate this data into an animated, interactive map. For a preview, check out: https://www.mapbox.com/blog/animated-atmospheric-water/ 
+In part one of this tutorial, we’ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we’ll manipulate this data into an animated, interactive map. For a preview, check out: https://www.mapbox.com/blog/animated-atmospheric-water/

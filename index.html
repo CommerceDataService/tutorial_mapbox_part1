@@ -173,10 +173,12 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
             <div class="row">
                 <br>
                 <div class="col-lg-3 col-md-4 col-sm-5" style="color:lightgrey">
+
                      <h4>By <a href="https://www.mapbox.com/about/team/#damon-burgett">Damon Burgett</a>, Geographer, Mapbox <small>and <br></small><span style="color: #337ab7;" >Jeff Chen</span>, Chief Data Scientist, US Dept. of Commerce</h4>
                 </div>
                 <div class="col-lg-6 col-md-5 col-sm-5" style="color:lightgrey">
                <em>As part of the <a href="https://www.commerce.gov/datausability/">Commerce Data Usability Project</a>,  Mapbox in collaboration with the <a href="https://www.commerce.gov/dataservice/">Commerce Data Service</a> has created a two part tutorial that will guide you though processing and visualizating Precipitable Water data.  If you have question, feel free to reach out to the Commerce Data Service at <a href="mailto:datausability@doc.gov">datausability@doc.gov</a> or Mapbox at <a href="mailto:help@mapbox.com">help@mapbox.com</a>.</em><br>
+
                     
                     </p>
                 </div>
@@ -187,17 +189,21 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id ="story" class="container-fluid main-container">
 
-<h3>Atmospheric Rivers (AR) are narrow regions in the atmosphere that transport water across the world.</h3>
+
+<h3 ><strong>Atmospheric Rivers (AR) are narrow regions in the atmosphere that transport water across the world.</strong></h3>
+
 <p>Like waterways on the ground, ARs are wide ranging in size, with the ability to hold vast amounts of water. The effects of these rivers suspended in the air may be beneficial or detrimental. When ARs slow and stall, vulnerable areas are at risk of heavy, damaging rainfalls and floods. Alternatively, the more common, weaker ARs bring much needed rain to resupply water reserves.</p>
 <p>How do we know when moisture is moving our way? Among the many meteorological indicators that are collected and modeled by the National Oceanic + Atmospheric Administration (NOAA) is Precipitable Water (Pwat), which is the amount of water that can be extracted from the entire overlying atmosphere over a particular location on the surface of the Earth. Pwat is typically measured in inches, millimeters or kg/m<sup>2</sup>. It is a key measure of the available “fuel” for the storms in the atmosphere and an estimate for how much rain or snow could be produced from those storms. Thus, when Pwat values are high, the atmosphere is laden with moisture and has the potential to create storms with large amounts of precipitation whereas low values indicate the atmosphere is relatively dry and it is unlikely to produce significant amounts of rainfall or snowfall.</p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12313587/ac86d808-ba1d-11e5-9405-e1597f9db8a6.png" alt="image"></p>
 <p>Beyond its utility, I find Pwat to be a very striking weather variable. The complex swirling and eddying patterns bring alive atmospheric processes, and are a beautiful liquid analog to the more esoteric variable that they describe. Combining these data with reference information - coastlines, political borders, and terrain - helps to paint a clearer picture of earth surface and atmospheric interactions on our planet.</p>
 <p>It’s helpful to keep in mind that Pwat alone does not indicate to what extent certain atmospheric processes, such as thunderstorms, will be able to extract the water from the atmosphere, but it is a measure of the potential for such precipitation through those processes. Nonetheless, it’s a critical measure collected by satellite instruments and used for producing NOAA’s weather forecasts.</p>
     
-<h2><a id="code"></a>Getting Started</h2>
+
+<h2 style="color: #337ab7;font-weight:bold"><a id="code" ></a><strong><br>Getting Started</strong></h2>
 <p>This tutorial is the first in a two part series that will guide you through the steps to visualize <a href="http://nomads.ncep.noaa.gov">NOAA NOMADS</a> data. Part 1 covers processing and visualization of Pwat data from the <a href="http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl">0.25 degree Global Forecast System (GFS)</a>. As atmospheric rivers are dynamic, Part 2 will discuss how to produce a video-based animated map of this data that enables discovery of complex temporal patterns.</p>
 <p>To get started quickly, the code for this tutorial can be found at the following <a href="https://github.com/CommerceDataService/tutorial_mapbox_part1">Github repository</a>.</p>
-<h3><a id="Step_1_Preliminaries_24"></a>Step 1: Preliminaries</h3>
+    
+<h3 style="color: #337ab7;font-weight:bold"><a id="Step_1_Preliminaries_24"></a><br>Step 1: Preliminaries</h3>
 <h4><a id="Libraries_and_Utilities_27"></a>Libraries and Utilities</h4>
 <p>We’ll be using the following tools to wrangle the weather model output files:</p>
 <ul>
@@ -207,7 +213,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <li><strong><a href="https://www.mapbox.com/mapbox-studio/">Mapbox Studio</a></strong>: A map design platform for vector-based web maps.</li>
 </ul>
 <p>You should be able to find install instructions for all of these on their respective web pages.</p>
-<h3><a id="Step_2_Get_the_data_37"></a>Step 2: Get the data</h3>
+    
+<h3 style="color: #337ab7;font-weight:bold"><a id="Step_2_Get_the_data_37"></a><br>Step 2: Get the data</h3>
 <p>The <a href="http://nomads.ncep.noaa.gov">NOAA NOMADS</a> website provides access to a myriad array of weather prediction data. We’ll be working with precipitable water (PWAT) data from the <a href="http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl">0.25 degree Global Forecast System (GFS)</a>. There is a lot of data in the system, so we’ll guide you through how to find the URL that will enable you to download the right data.</p>
 <p>As can be seen in this file list on the NOMADS site, there are multiple prediction times for each dataset corresponding to when the model has run, each of which allows access to a number of variables for a large number of atmospheric levels at various intervals from when the model has run. To start, let’s select the first file in the list.</p>
 <p><img src="img/screencap1.jpg" alt="image"></p>
@@ -221,7 +228,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </code></pre>
 <p>You should now have a one band <code>grib2</code> depicting PWAT for the date and time that you selected. Open this in a desktop GIS system such as <a href="http://www.qgis.org/">QGIS</a> and you should see the following:
 <img src="https://cloud.githubusercontent.com/assets/5084513/12276750/5fc8b3ca-b92c-11e5-8332-9460e5655074.png" alt="image"></p>
-<h3><a id="Part_3_Geoprocessing_65"></a>Part 3: Geoprocessing</h3>
+    
+<h3 style="color: #337ab7;font-weight:bold"><a id="Part_3_Geoprocessing_65"></a><br>Step 3: Geoprocessing</h3>
 <h4><a id="Converting_to_global_grib_using_gribdoctor_67"></a>Converting to global grib using <code>gribdoctor</code></h4>
 <p>A quirk of these grib files are their extent: a global, equirectangular raster with an origin of -(cellsize / 2), all the way around the world, crossing the antimeridian, to 360 - (cellsize / 2). To more easily process the gribs, we created <a href="https://github.com/mapbox/grib-doctor">gribdoctor</a> - a project that is still under development - which (a) upsamples the data by a factor of 2, (b) splits at the antimeridian, and © splices the data onto the other side to make a -180 to 180 extent dataset. This is crucial to be able to work with the Mapbox stack. Here is the command:</p>
 <pre><code>gribdoctor smoosh -dev -uw &lt;input&gt;<span class="hljs-class">.grib2</span> &lt;output&gt;<span class="hljs-class">.tif</span>
@@ -250,7 +258,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </code></pre>
 <p>We should see the input data projected to the web mercator projection:</p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12313499/cd5c8de4-ba1c-11e5-8ddc-dc884dd94291.png" alt="image"></p>
-<h4><a id="Colorize_PWAT_110"></a>Colorize PWAT</h4>
+<h4><a id="Colorize_PWAT_110"></a><br>Colorize PWAT</h4>
 <p>Right now, our tif contains cell values that correspond to units of precipitable water units (kg/m<sup>2</sup>). In order to utilize this on a web map, we need to convert these values into color values (RGB). We’ll do this using a tool designed for creating <a href="https://en.wikipedia.org/wiki/Hypsometric_tints">hypsometric tints</a>, <a href="http://www.gdal.org/gdaldem.html"><code>gdaldem color-relief</code></a>. This tool takes a color ramp file that maps input data values to red, green, and blue color values. Here’s the ramp that I used:</p>
 <pre><code><span class="hljs-number">10.0</span> <span class="hljs-number">47</span> <span class="hljs-number">31</span> <span class="hljs-number">45</span>
 <span class="hljs-number">18.0</span> <span class="hljs-number">63</span> <span class="hljs-number">48</span> <span class="hljs-number">68</span>
@@ -272,29 +280,34 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </code></pre>
 <p>Now, you should have a color <code>tif</code> of your input data:</p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12313587/ac86d808-ba1d-11e5-9405-e1597f9db8a6.png" alt="image"></p>
-<h3><a id="Part_4_Upload_and_incorporate_into_a_Map_145"></a>Part 4: Upload and incorporate into a Map</h3>
+    
+<h3 style="color: #337ab7;font-weight:bold"><a id="Part_4_Upload_and_incorporate_into_a_Map_145"></a><br>Step 4: Upload and incorporate into a Map</h3>
 <p>We’ll be using <a href="https://www.mapbox.com/mapbox-studio/">Mapbox Studio</a> to upload and integrate our colorized PWAT data with basemap data. If at any point you become lost, refer back to the <a href="https://www.mapbox.com/help/getting-started-mapbox-studio-1/">“Getting Started with Mapbox Studio” Guide</a>. You’ll need to make an account to use Studio.</p>
-<h4><a id="Upload_the_colorized_PWAT_tif_149"></a>Upload the colorized PWAT tif</h4>
+    
+<h4><a id="Upload_the_colorized_PWAT_tif_149"></a><br>Upload the colorized PWAT TIF</h4>
 <p>We need to upload our colorized PWAT data to a Mapbox Studio dataset in order to integrate it into a style. In the data tab, click the “New dataset” button to upload - detailed instructions here: <a href="https://www.mapbox.com/help/getting-started-mapbox-studio-1/#upload-a-dataset">https://www.mapbox.com/help/getting-started-mapbox-studio-1/#upload-a-dataset</a></p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12629107/2dd80f7a-c4fb-11e5-94d4-f1106b8fbf78.png" alt="image"></p>
-<h4><a id="Integrate_into_a_map_style_155"></a>Integrate into a map style</h4>
+    
+<h4><a id="Integrate_into_a_map_style_155"></a><br>Integrate into a map style</h4>
 <p>After the upload is finished processing we can add this dataset to a style. For the color scheme I chose above, the “dark” template is a good starting point. In the Styles tab, click “New style”, and select the Dark template:</p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12629165/7d13d696-c4fb-11e5-8576-f8eeb5dbb295.png" alt="image"></p>
 <p>Detailed instructions here: <a href="https://www.mapbox.com/help/getting-started-mapbox-studio-1/#create-a-new-style">https://www.mapbox.com/help/getting-started-mapbox-studio-1/#create-a-new-style</a></p>
 <p>Now, let’s add our dataset to this new style. Click on Add new layer, --&gt; Select a dataset, then navigate to and click on your uploaded data.</p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12629362/720815a4-c4fc-11e5-8649-f28c060239f3.png" alt="image"></p>
 <p>Clicking “Create” layer will then add this dataset as the top layer in your style. It should be added as the uppermost layer.</p>
-<h4><a id="Stylize_the_map_169"></a>Stylize the map</h4>
+    
+<h4><a id="Stylize_the_map_169"></a><hr>Stylize the map</h4>
 <p>This is the fun part! Let’s first move this layer below labels, borders, but above water, terrain and landcover. Click and drag to the desired position. You’ll now see labels, borders, and other features as you zoom into the map.</p>
 <p>Now, let’s make this layer slightly transparent and allow the water areas to slightly show through. Click on the layer, then change the opacity to ~ 0.5. You can also slightly bump the brightness to help the layer pop.</p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12630131/c61ca2ba-c4ff-11e5-9671-45bffd80d0e2.png" alt="image"></p>
 <p>If you are satisfied with your style, you are done! Click publish, and your map is ready to be shared. Alternatively, keep tweaking the style - every element in the map from labels, to landcover, to the terrain style can be manipulated.</p>
-<h4><a id="Sharing_your_map_179"></a>Sharing your map</h4>
+    
+<h4><a id="Sharing_your_map_179"></a><hr>Sharing your map</h4>
 <p>From the Home tab of Mapbox Studio, click on your published map.</p>
-<p><img src="https://cloud.githubusercontent.com/assets/5084513/12630295/a4940858-c500-11e5-8461-de7d118e54f3.png" alt="image"></p>
+<p><img src="https://cloud.githubusercontent.com/assets/5084513/12630295/a4940858-c500-11e5-8461-de7d118e54f3.png" alt="image"></p><br>
 <p>To share, copy the share link in the bottom left of the page. Here’s a live map: <a href="https://api.mapbox.com/styles/v1/dnomadb/cijqefqgn005h90lxxe5dygmn.html?title=true&amp;access_token=pk.eyJ1IjoiZG5vbWFkYiIsImEiOiJEak5aTXdZIn0.UtQIRl-MzHHZk6TIAHSWww#1.22/21.6/23.5">https://api.mapbox.com/styles/v1/dnomadb/cijqefqgn005h90lxxe5dygmn.html?title=true&amp;access_token=pk.eyJ1IjoiZG5vbWFkYiIsImEiOiJEak5aTXdZIn0.UtQIRl-MzHHZk6TIAHSWww#1.22/21.6/23.5</a></p>
-    <img src="img/endshot.png" alt="final"/>
-<p>In part one of this tutorial, we’ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we’ll manipulate this data into an animated, interactive map. For a preview, check out: <a href="https://www.mapbox.com/blog/animated-atmospheric-water/">https://www.mapbox.com/blog/animated-atmospheric-water/</a></p>
+    <br><img src="img/endshot.png" alt="final"/><br>
+<p><br>In part one of this tutorial, we’ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we’ll manipulate this data into an animated, interactive map. For a preview, check out: <a href="https://www.mapbox.com/blog/animated-atmospheric-water/">https://www.mapbox.com/blog/animated-atmospheric-water/</a></p>
     </div>
 <script>
 

@@ -240,7 +240,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p><img src="img/screencap1.jpg" alt="image"></p>
 <p>For each file, a wizard page allows users to select the appropriate conditions. We’ll need to check off ‘PWAT’ in the section labeled ‘Select the variables desired’, the subregion as well as the handy checkbox at the bottom that creates a URL for “web programming” - we’ll be using a URL constructed from this.</p>
 <p><img src="img/screencap2.jpg" alt="image"></p>
-<p>For precipitable water (PWAT) at all levels, we have the following url - note that the url will change with the date, so make sure to construct your own:</p>
+<p>For precipitable water (PWAT) at all levels, we have the following URL - note that the URL will change with the date, so make sure to construct your own:</p>
 <pre><code><span class="hljs-keyword">http</span>://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?<span class="hljs-built_in">file</span>=gfs.t12z.pgrb2<span class="hljs-number">.0</span>p25.f000&amp;all_lev=<span class="hljs-command"><span class="hljs-keyword">on</span>&amp;<span class="hljs-title">var_PWAT</span>=<span class="hljs-title">on</span>&amp;<span class="hljs-title">leftlon</span>=<span class="hljs-title">0</span>&amp;<span class="hljs-title">rightlon</span>=<span class="hljs-title">360</span>&amp;<span class="hljs-title">toplat</span>=<span class="hljs-title">90</span>&amp;<span class="hljs-title">bottomlat</span>=-<span class="hljs-title">90</span>&amp;<span class="hljs-title">dir</span>=%<span class="hljs-title">2Fgfs</span><span class="hljs-number">.2016011212</span></span>
 </code></pre>
 <p>Let’s download this file to our working directory as “raw.grib2” using <code>wget</code>. Alternatively, you can directly download from the NOMADS web interface.</p>
@@ -278,7 +278,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>We should see the input data projected to the web mercator projection:</p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12313499/cd5c8de4-ba1c-11e5-8ddc-dc884dd94291.png" alt="image"></p>
 <h4><a id="Colorize_PWAT_110"></a>Colorize PWAT</h4>
-<p>Right now, our tif contains cell values that correspond to units of precipitable water units (kg/m<sup>2</sup>). In order to utilize this on a web map, we need to convert these values into color values (RGB). We’ll do this using a tool designed for creating <a href="https://en.wikipedia.org/wiki/Hypsometric_tints">hypsometric tints</a>, <a href="http://www.gdal.org/gdaldem.html"><code>gdaldem color-relief</code></a>. This tool takes a color ramp file that maps input data values to red, green, and blue color values. Here’s the ramp that I used:</p>
+<p>Right now, our tif contains cell values that correspond to units of precipitable water units (kg/m<sup>2</sup>). In order to utilize this on a web map, we need to convert these values into color values (RGB). We’ll do this using a tool designed for creating <a href="https://en.wikipedia.org/wiki/Hypsometric_tints">hypsometric tints</a>, <a href="http://www.gdal.org/gdaldem.html"><code>gdaldem color-relief</code></a>. This tool takes a color ramp file that maps input data values to red, green, and blue color values. Here’s the ramp that we used:</p>
 <pre><code><span class="hljs-number">10.0</span> <span class="hljs-number">47</span> <span class="hljs-number">31</span> <span class="hljs-number">45</span>
 <span class="hljs-number">18.0</span> <span class="hljs-number">63</span> <span class="hljs-number">48</span> <span class="hljs-number">68</span>
 <span class="hljs-number">26.0</span> <span class="hljs-number">76</span> <span class="hljs-number">68</span> <span class="hljs-number">94</span>
@@ -290,7 +290,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <span class="hljs-number">74.0</span> <span class="hljs-number">70</span> <span class="hljs-number">216</span> <span class="hljs-number">231</span>
 <span class="hljs-number">82.0</span> <span class="hljs-number">64</span> <span class="hljs-number">244</span> <span class="hljs-number">244</span>
 </code></pre>
-<p>The first column is the data (PWAT) value, and the second, third, and fourth are the red, green, and blue values that this should be mapped to. Anything in-between is interpolated. You can generate your own color ramp - I like <a href="http://tristen.ca/hcl-picker/#/hlc/6/1/21313E/EFEE69">http://tristen.ca/hcl-picker/#/hlc/6/1/21313E/EFEE69</a> (you’ll have to convert from color hex code) or <a href="http://colorbrewer2.org/">http://colorbrewer2.org/</a>.</p>
+<p>The first column is the data (PWAT) value, and the second, third, and fourth are the red, green, and blue values that this should be mapped to. Anything in-between is interpolated. You can generate your own color ramp - We recommend <a href="http://tristen.ca/hcl-picker/#/hlc/6/1/21313E/EFEE69">http://tristen.ca/hcl-picker/#/hlc/6/1/21313E/EFEE69</a> (you’ll have to convert from color hex code) or <a href="http://colorbrewer2.org/">http://colorbrewer2.org/</a>.</p>
 <p>Save this ramp to a text file <code>color-ramp.txt</code>. Here is the command:</p>
 <pre><code>gdaldem <span class="hljs-attribute">color</span>-relief &lt;input&gt;<span class="hljs-class">.tif</span> &lt;<span class="hljs-attribute">color</span> ramp&gt;<span class="hljs-class">.txt</span> &lt;output&gt;<span class="hljs-class">.tif</span>
 </code></pre>
@@ -324,7 +324,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 =======
     <img src="img/endshot.png" alt="final"/>
 >>>>>>> origin/gh-pages
-<p>In part one of this tutorial, we’ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we’ll manipulate this data into an animated, interactive map. For a preview, check out: <a href="https://www.mapbox.com/blog/animated-atmospheric-water/">https://www.mapbox.com/blog/animated-atmospheric-water/</a></p>
+<br/><p>In part one of this tutorial, we’ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we’ll manipulate this data into an animated, interactive map. For a preview, check out: <a href="https://www.mapbox.com/blog/animated-atmospheric-water/">https://www.mapbox.com/blog/animated-atmospheric-water/</a></p>
     </div>
 <script>
 

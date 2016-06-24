@@ -1,11 +1,22 @@
 .scroll {
      /*Set a css background */
+<<<<<<< HEAD
+    background:url(../img/header.gif);
+
+    /*Dont mind the rest*/
+    position:relative;
+    width:100%;
+    height:100%;
+    min-height: auto;
+    background-position: center !important;
+=======
     background:url(../img/DOC_Tutorial_header.jpg);
 
     /*Dont mind the rest*/
     position:relative;
     height:120%;
     background-position:bottom;
+>>>>>>> fc9a4a941de91ed88ddd53b5e76690fd320438cb
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-repeat: no-repeat;

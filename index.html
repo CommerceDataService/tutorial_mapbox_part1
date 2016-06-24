@@ -7,7 +7,7 @@
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      })(window,document,'script','www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-72688808-7', 'auto');
       ga('send', 'pageview');
@@ -118,8 +118,9 @@
                       <h2 class="sectionhead">Getting Started</h2>
                       <p>This tutorial is the first in a two-part series that will guide you through the steps to visualize <a href="http://nomads.ncep.noaa.gov">NOAA NOMADS</a> data. Part 1 covers processing and visualization of PWAT data from the <a href="http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl">0.25 degree Global Forecast System (GFS)</a>. As atmospheric rivers are dynamic, Part 2 will discuss how to produce a video-based animated map of this data that enables discovery of complex temporal patterns.</p>
                       <p>To get started quickly, the code for this tutorial can be found at the following <a href="Github repo]([INSERT LINK]) ([INSERT LINK])">Github Repository</a>.</p>
+                  </section>
 
-
+                  <section id="step1">
                       <h2 class="subsection">Step 1: Preliminaries</h2>
                       <h4>Libraries and Utilities</h4>
                       <p>We&#39;ll be using the following tools to wrangle the weather model output files:</p>
@@ -130,6 +131,9 @@
                       <li><strong><a href="https://www.mapbox.com/mapbox-studio/">Mapbox Studio</a></strong>: A map design platform for vector-based web maps.</li>
                       </ul>
                       <p>You should be able to find install instructions for all of these on their respective web pages.</p>
+                  </section>
+
+                  <section id="step2">
                       <h2 class="subsection">Step 2: Get the data</h2>
                       <p>The <a href="http://nomads.ncep.noaa.gov">NOAA NOMADS</a> website provides access to a myriad array of weather prediction data. We&#39;ll be working with precipitable water (PWAT) data from the <a href="http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl">0.25 degree Global Forecast System (GFS)</a>. There is a lot of data in the system, so we&#39;ll guide you through how to find the URL that will enable you to download the right data.</p>
                       <p>As can be seen in this file list on the NOMADS site, there are multiple prediction times for each dataset corresponding to when the model has run, each of which allows access to a number of variables for a large number of atmospheric levels at various intervals from when the model has run. To start, let&#39;s select the first file in the list.</p>
@@ -141,6 +145,9 @@
                       <p>Let&#39;s download this file to our working directory as &#34;raw.grib2&#34; using <code>wget</code>. Alternatively, you can directly download from the NOMADS web interface.</p>
                       <pre><code>wget <span class="hljs-keyword">http</span>://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?<span class="hljs-built_in">file</span>=gfs.t12z.pgrb2<span class="hljs-number">.0</span>p25.f000&amp;all_lev=<span class="hljs-command"><span class="hljs-keyword">on</span>&amp;<span class="hljs-title">var_PWAT</span>=<span class="hljs-title">on</span>&amp;<span class="hljs-title">leftlon</span>=<span class="hljs-title">0</span>&amp;<span class="hljs-title">rightlon</span>=<span class="hljs-title">360</span>&amp;<span class="hljs-title">toplat</span>=<span class="hljs-title">90</span>&amp;<span class="hljs-title">bottomlat</span>=-<span class="hljs-title">90</span>&amp;<span class="hljs-title">dir</span>=%<span class="hljs-title">2Fgfs</span><span class="hljs-number">.2016011212</span> -<span class="hljs-title">O</span> <span class="hljs-title">raw</span>.<span class="hljs-title">grib2</span></span></code></pre>
                       <p>You should now have a one band <code>grib2</code> depicting PWAT for the date and time that you selected. Open this in a desktop GIS system such as <a href="http://www.qgis.org/">QGIS</a> and you should see the following:</p><img src="https://cloud.githubusercontent.com/assets/5084513/12276750/5fc8b3ca-b92c-11e5-8332-9460e5655074.png" alt="image">
+                  </section>
+
+                  <section id="step3">
                       <h2 class="subsection">Step 3: Geoprocessing</h2>
                       <h4>Converting to global grib using <code>gribdoctor</code></h4>
                       <p>A quirk of these grib files are their extent: a global, equirectangular raster with an origin of -(cellsize / 2), all the way around the world, crossing the antimeridian, to 360 - (cellsize / 2). To more easily process the gribs, we created <a href="https://github.com/mapbox/grib-doctor">gribdoctor</a> - a project that is still under development - which (a) upsamples the data by a factor of 2, (b) splits at the antimeridian, and (c) splices the data onto the other side to make a -180 to 180 extent dataset. This is crucial to be able to work with the Mapbox stack. Here is the command:</p>
@@ -185,6 +192,9 @@
                       <pre><code>gdaldem <span class="hljs-attribute">color</span>-relief mercator<span class="hljs-class">.tif</span> <span class="hljs-attribute">color</span>-ramp<span class="hljs-class">.txt</span> <span class="hljs-attribute">color</span><span class="hljs-class">.tif</span></code></pre>
                       <p>Now, you should have a color <code>tif</code> of your input data:</p>
                       <p><img src="https://cloud.githubusercontent.com/assets/5084513/12313587/ac86d808-ba1d-11e5-9405-e1597f9db8a6.png" alt="image"></p>
+                  </section>
+
+                  <section id="step4">
                       <h2 class="subsection"><a id="Part_4_Upload_and_incorporate_into_a_Map_145"></a>Step 4: Upload and incorporate into a Map</h2>
                       <p>We&#39;ll be using <a href="https://www.mapbox.com/mapbox-studio/">Mapbox Studio</a> to upload and integrate our colorized PWAT data with basemap data. If at any point you become lost, refer back to the <a href="https://www.mapbox.com/help/getting-started-mapbox-studio-1/">&#34;Getting Started with Mapbox Studio&#34; Guide</a>. You&#39;ll need to make an account to use Studio.</p>
                       <h4><a id="Upload_the_colorized_PWAT_tif_149"></a>Upload the colorized PWAT tif</h4>
@@ -207,6 +217,9 @@
                       <p><img src="https://cloud.githubusercontent.com/assets/5084513/12630295/a4940858-c500-11e5-8461-de7d118e54f3.png" alt="image"></p>
                       <p>To share, copy the share link in the bottom left of the page. Here&#39;s a live map: <a href="https://api.mapbox.com/styles/v1/dnomadb/cijqefqgn005h90lxxe5dygmn.html?title=true&amp;access_token=pk.eyJ1IjoiZG5vbWFkYiIsImEiOiJEak5aTXdZIn0.UtQIRl-MzHHZk6TIAHSWww#1.22/21.6/23.5">https://api.mapbox.com/styles/v1/dnomadb/cijqefqgn005h90lxxe5dygmn.html?title=true&amp;access_token=pk.eyJ1IjoiZG5vbWFkYiIsImEiOiJEak5aTXdZIn0.UtQIRl-MzHHZk6TIAHSWww#1.22/21.6/23.5</a></p>
                           <img src="img/endshot.png" alt="final"/>
+                  </section>
+
+                  <section id="conclusion">
                       <br/><p>In part one of this tutorial, we&#39;ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we&#39;ll manipulate this data into an animated, interactive map. For a preview, check out: <a href="https://www.mapbox.com/blog/animated-atmospheric-water/">https://www.mapbox.com/blog/animated-atmospheric-water/</a></p>
                   </section>
 
@@ -245,7 +258,13 @@
                     </li>
                     <li><a href="#intro">INTRODUCTION</a></li>
                     <li><a href="#code">GETTING STARTED</a></li>
-                    
+                    <li><a href="#step1">STEP 1: PRELIMINARIES</a></li>
+                    <li><a href="#step2">STEP 2: GET THE DATA</a></li>
+                    <li><a href="#step3">STEP 3: GEOPROCESSING</a></li>
+                    <li><a href="#step4">STEP 4: UPLOAD AND INCORPORATE</a></li>
+                    <li><a href="#conclusion">CONCLUSION</a></li>
+
+
                   </ul>
               </div><!-- Sidebar -->
             </div>

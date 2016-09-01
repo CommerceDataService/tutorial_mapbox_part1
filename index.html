@@ -11,9 +11,24 @@
   ga('send', 'pageview');
 
 </script>
+    
+    <link rel="shortcut icon" href="https://www.commerce.gov/sites/all/themes/doc/doc_theme/favicon.ico" type="image/vnd.microsoft.icon" />
+    <title> Mapbox + Weather Data </title>
+=======
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72688808-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
     <link rel="shortcut icon" href="https://www.commerce.gov/sites/all/themes/doc/doc_theme/favicon.ico" type="image/vnd.microsoft.icon" />
     <title> Mapbox + Weather Data </title>
+>>>>>>> copy-edit
 
         <link rel="stylesheet" href="css/creative.css" type="text/css">
         <link rel="stylesheet" href="css/animate.min.css" type="text/css">
@@ -173,6 +188,13 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
             <div class="row">
                 <br>
                 <div class="col-lg-3 col-md-4 col-sm-5" style="color:lightgrey">
+                     <h4>By <a href="https://www.mapbox.com/about/team/#damon-burgett">Damon Burgett</a>, Geographer, Mapbox <small>and <br></small>Jeff Chen, Chief Data Scientist, US Dept. of Commerce</h4>
+                </div>
+                <div class="col-lg-6 col-md-5 col-sm-5" style="color:lightgrey">
+               <em>As part of the <a href="https://www.commerce.gov/datausability/">Commerce Data Usability Project</a>,  Mapbox in collaboration with the <a href="https://www.commerce.gov/dataservice/">Commerce Data Service</a> has created a two part tutorial that will guide you though processing and visualizating Precipitable Water data.  If you have question, feel free to reach out to the Commerce Data Service at <a href="mailto:DataUsability@doc.gov">DataUsability@doc.gov</a> or Mapbox at <a href="mailto:help@mapbox.com">help@mapbox.com</a>.</em><br>
+                    
+=======
+                <div class="col-lg-3 col-md-4 col-sm-5" style="color:lightgrey">
 
                      <h4>By <a href="https://www.mapbox.com/about/team/#damon-burgett">Damon Burgett</a>, Geographer, Mapbox <small>and <br></small><span style="color: #337ab7;" >Jeff Chen</span>, Chief Data Scientist, US Dept. of Commerce</h4>
                 </div>
@@ -181,6 +203,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
                <em>As part of the <a href="https://www.commerce.gov/datausability/">Commerce Data Usability Project</a>,  Mapbox in collaboration with the <a href="https://www.commerce.gov/dataservice/">Commerce Data Service</a> has created a two part tutorial that will guide you though processing and visualizing Precipitable Water data.  If you have questions, feel free to reach out to the Commerce Data Service at <a href="mailto:datausability@doc.gov">datausability@doc.gov</a> or Mapbox at <a href="mailto:help@mapbox.com">help@mapbox.com</a>.</em><br>
 
 
+>>>>>>> copy-edit
                     </p>
                 </div>
             </div>
@@ -190,6 +213,18 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id ="story" class="container-fluid main-container">
 
+<h3>Atmospheric Rivers (AR) are narrow regions in the atmosphere that that transport water across the world.</h3>
+<p>Like waterways on the ground, ARs are wide ranging in size, with the ability to hold vast amounts of water. The effects of these rivers suspended in the air may be beneficial or detrimental. When ARs slow and stall, vulnerable areas are at risk of heavy, damaging rainfalls and floods. Alternatively, the more common, weaker ARs bring much needed rain to resupply water reserves.</p>
+<p>How do we know when moisture is moving our way? Among the many meteorological indicators that are collected and modeled by the National Oceanic + Atmospheric Administration (NOAA) is Precipitable Water (Pwat), which is the amount of water that can be extracted from the entire overlying atmosphere over a particular location on the surface of the Earth. Pwat is typically measured in inches, millimeters or kg/m<sup>2</sup>. It is a key measure of the available “fuel” for the storms in the atmosphere and an estimate for how much rain or snow could be produced from those storms. Thus, when Pwat values are high, the atmosphere is laden with moisture and has the potential to create storms with large amounts of precipitation whereas low values indicate the atmosphere is relatively dry and it is unlikely to produce significant amounts of rainfall or snowfall.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/5084513/12313587/ac86d808-ba1d-11e5-9405-e1597f9db8a6.png" alt="image"></p>
+<p>Beyond its utility, I find PWAT to be a very striking weather variable. The complex swirling and eddying patterns bring alive atmospheric processes, and are a beautiful liquid analog to the more esoteric variable that they describe. Combining these data with reference information - coastlines, political borders, and terrain - helps to paint a clearer picture of earth surface and atmospheric interactions on our planet.</p>
+<p>It’s helpful to keep in mind that Pwat alone does not indicate to what extent certain atmospheric processes, such as thunderstorms, will be able to extract the water from the atmosphere, but it is a measure of the potential for such precipitation through those processes. Nonetheless, it’s a critical measure collected by satellite instruments and used for producing NOAA’s weather forecasts.</p>
+    
+<h2><a id="code"></a>Getting Started</h2>
+<p>This tutorial is the first in a two part series that will guide you through the steps to visualize <a href="http://nomads.ncep.noaa.gov">NOAA NOMADS</a> data.</p><p>Part 1 covers processing and visualization of Pwat data from the <a href="http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl">0.25 degree Global Forecast System (GFS)</a>. As atmospheric rivers are dynamic.</p><p>Part 2 will discuss how to produce a video-based animated map of this data that enables discovery of complex temporal patterns.</p>
+<p>To get started quickly, the code for this tutorial can be found at the following <a href="https://github.com/CommerceDataService/tutorial_mapbox_part1">Github repository</a>.</p>
+<h3><a id="Step_1_Preliminaries_24"></a>Step 1: Preliminaries</h3>
+=======
 
 <h3 ><strong>Atmospheric Rivers (AR) are narrow regions in the atmosphere that transport water across the world.</strong></h3>
 
@@ -205,6 +240,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>To get started quickly, the code for this tutorial can be found at the following <a href="https://github.com/CommerceDataService/tutorial_mapbox_part1">Github repository</a>.</p>
 
 <h3 style="color: #337ab7;font-weight:bold"><a id="Step_1_Preliminaries_24"></a><br>Step 1: Preliminaries</h3>
+>>>>>>> copy-edit
 <h4><a id="Libraries_and_Utilities_27"></a>Libraries and Utilities</h4>
 <p>We’ll be using the following tools to wrangle the weather model output files:</p>
 <ul>
@@ -221,7 +257,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p><img src="img/screencap1.jpg" alt="image"></p>
 <p>For each file, a wizard page allows users to select the appropriate conditions. We’ll need to check off ‘PWAT’ in the section labeled ‘Select the variables desired’, the subregion as well as the handy checkbox at the bottom that creates a URL for “web programming” - we’ll be using a URL constructed from this.</p>
 <p><img src="img/screencap2.jpg" alt="image"></p>
-<p>For precipitable water (PWAT) at all levels, we have the following url - note that the url will change with the date, so make sure to construct your own:</p>
+<p>For precipitable water (PWAT) at all levels, we have the following URL - note that the URL will change with the date, so make sure to construct your own:</p>
 <pre><code><span class="hljs-keyword">http</span>://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?<span class="hljs-built_in">file</span>=gfs.t12z.pgrb2<span class="hljs-number">.0</span>p25.f000&amp;all_lev=<span class="hljs-command"><span class="hljs-keyword">on</span>&amp;<span class="hljs-title">var_PWAT</span>=<span class="hljs-title">on</span>&amp;<span class="hljs-title">leftlon</span>=<span class="hljs-title">0</span>&amp;<span class="hljs-title">rightlon</span>=<span class="hljs-title">360</span>&amp;<span class="hljs-title">toplat</span>=<span class="hljs-title">90</span>&amp;<span class="hljs-title">bottomlat</span>=-<span class="hljs-title">90</span>&amp;<span class="hljs-title">dir</span>=%<span class="hljs-title">2Fgfs</span><span class="hljs-number">.2016011212</span></span>
 </code></pre>
 <p>Let’s download this file to our working directory as “raw.grib2” using <code>wget</code>. Alternatively, you can directly download from the NOMADS web interface.</p>
@@ -272,7 +308,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <span class="hljs-number">74.0</span> <span class="hljs-number">70</span> <span class="hljs-number">216</span> <span class="hljs-number">231</span>
 <span class="hljs-number">82.0</span> <span class="hljs-number">64</span> <span class="hljs-number">244</span> <span class="hljs-number">244</span>
 </code></pre>
-<p>The first column is the data (PWAT) value, and the second, third, and fourth are the red, green, and blue values that this should be mapped to. Anything in-between is interpolated. You can generate your own color ramp - I like <a href="http://tristen.ca/hcl-picker/#/hlc/6/1/21313E/EFEE69">http://tristen.ca/hcl-picker/#/hlc/6/1/21313E/EFEE69</a> (you’ll have to convert from color hex code) or <a href="http://colorbrewer2.org/">http://colorbrewer2.org/</a>.</p>
+<p>The first column is the data (PWAT) value, and the second, third, and fourth are the red, green, and blue values that this should be mapped to. Anything in-between is interpolated. You can generate your own color ramp - We recommend <a href="http://tristen.ca/hcl-picker/#/hlc/6/1/21313E/EFEE69">http://tristen.ca/hcl-picker/#/hlc/6/1/21313E/EFEE69</a> (you’ll have to convert from color hex code) or <a href="http://colorbrewer2.org/">http://colorbrewer2.org/</a>.</p>
 <p>Save this ramp to a text file <code>color-ramp.txt</code>. Here is the command:</p>
 <pre><code>gdaldem <span class="hljs-attribute">color</span>-relief &lt;input&gt;<span class="hljs-class">.tif</span> &lt;<span class="hljs-attribute">color</span> ramp&gt;<span class="hljs-class">.txt</span> &lt;output&gt;<span class="hljs-class">.tif</span>
 </code></pre>
@@ -307,8 +343,12 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>From the Home tab of Mapbox Studio, click on your published map.</p>
 <p><img src="https://cloud.githubusercontent.com/assets/5084513/12630295/a4940858-c500-11e5-8461-de7d118e54f3.png" alt="image"></p><br>
 <p>To share, copy the share link in the bottom left of the page. Here’s a live map: <a href="https://api.mapbox.com/styles/v1/dnomadb/cijqefqgn005h90lxxe5dygmn.html?title=true&amp;access_token=pk.eyJ1IjoiZG5vbWFkYiIsImEiOiJEak5aTXdZIn0.UtQIRl-MzHHZk6TIAHSWww#1.22/21.6/23.5">https://api.mapbox.com/styles/v1/dnomadb/cijqefqgn005h90lxxe5dygmn.html?title=true&amp;access_token=pk.eyJ1IjoiZG5vbWFkYiIsImEiOiJEak5aTXdZIn0.UtQIRl-MzHHZk6TIAHSWww#1.22/21.6/23.5</a></p>
+    <img src="img/endshot.png" alt="final"/>
+<br/><p>In part one of this tutorial, we’ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we’ll manipulate this data into an animated, interactive map. For a preview, check out: <a href="https://www.mapbox.com/blog/animated-atmospheric-water/">https://www.mapbox.com/blog/animated-atmospheric-water/</a></p>
+=======
     <br><img src="img/endshot.png" alt="final"/><br>
 <p><br>In part one of this tutorial, we’ve taken a raw grib2 file from the NOAA NOMADS site, and transformed the data into a striking map showing atmospheric rivers across the world. The basics in opening, manipulating, and using the data can be applied broadly across potential applications.  Stay tuned for Part 2 of the tutorial where we’ll manipulate this data into an animated, interactive map. For a preview, check out: <a href="https://www.mapbox.com/blog/animated-atmospheric-water/">https://www.mapbox.com/blog/animated-atmospheric-water/</a></p>
+>>>>>>> copy-edit
     </div>
 <script>
 
